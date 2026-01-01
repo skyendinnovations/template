@@ -1,0 +1,29 @@
+{
+  "name": "template",
+  "private": true,
+  "packageManager": "bun@1.2.23",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "clean": "turbo run clean && rm -rf node_modules .turbo",
+    "db:generate": "cd packages/data && bun generate",
+    "db:migrate": "cd packages/data && bun migrate",
+    "db:studio": "cd packages/data && bun studio"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.0.0",
+    "prettier": "^3.0.0",
+    "prettier-plugin-tailwindcss": "^0.6.0",
+    "turbo": "^2.0.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "better-auth": "^1.4.10",
+    "oxlint": "^1.36.0"
+  }
+}
