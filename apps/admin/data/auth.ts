@@ -23,7 +23,6 @@ export const signInActionClient = actionClient
         await signIn.email({
           email: formData.email,
           password: formData.password,
-          callbackURL: `/`,
         });
 
         return { success: true };
@@ -47,7 +46,6 @@ export const signUpActionClient = actionClient
           email: formData.email,
           password: formData.password,
           name: formData.name,
-          callbackURL: `/signin`,
         });
 
         return { success: true };
