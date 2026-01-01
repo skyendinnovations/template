@@ -1,15 +1,3 @@
-import { z } from "zod";
-
-export const signInSchema = z.object({
-  email: z.string().email("Please enter a valid email address"),
-  password: z.string().min(6, "Password must be at least 6 characters"),
-});
-
-export const signUpSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email("Please enter a valid email address"),
-  password: z.string().min(6, "Password must be at least 6 characters"),
-});
-
-export type SignInFormData = z.infer<typeof signInSchema>;
-export type SignUpFormData = z.infer<typeof signUpSchema>;
+// Re-export schemas from auth package for backward compatibility
+export { signInSchema, signUpSchema } from "@template/auth/actions";
+export type { SignInFormData, SignUpFormData } from "@template/auth/actions";

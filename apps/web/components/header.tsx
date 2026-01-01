@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useSession } from "@/lib/auth-client";
-import { Button } from "@/components/ui/button";
+import { Button } from "@template/ui";
 import { UserMenu } from "@/components/user-menu";
 
 export function Header() {
@@ -12,7 +12,7 @@ export function Header() {
     <header className="border-b">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <Link href="/" className="text-xl font-bold bg-blue-500">
+          <Link href="/" className="text-xl font-bold">
             Template
           </Link>
 

@@ -1,16 +1,17 @@
 "use client";
 
 import { useSession, signOut } from "@/lib/auth-client";
-import { Button } from "@/components/ui/button";
 import {
+  Button,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+  Avatar,
+  AvatarFallback,
+} from "@template/ui";
 
 export function UserMenu() {
   const { data: session, isPending } = useSession();
