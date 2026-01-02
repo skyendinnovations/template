@@ -1,14 +1,14 @@
 import { DATABASE_URL } from "@/envs";
 import { neon } from "@neondatabase/serverless";
 import { drizzle, NeonHttpDatabase } from "drizzle-orm/neon-http";
+import * as schema from "@template/data/schema";
 
-type DbType = NeonHttpDatabase<Record<string, never>>;
+type DbType = NeonHttpDatabase<typeof schema>;
 
 let cachedDb: DbType | undefined;
 
 export function getDb(): DbType {
   if (cachedDb) {
-
     return cachedDb;
   }
 
@@ -17,9 +17,8 @@ export function getDb(): DbType {
     throw new Error("DATABASE_URL environment variable is not set");
   }
 
-
   const sql = neon(url);
-  cachedDb = drizzle(sql);
+  cachedDb = drizzle(sql, { schema });
   return cachedDb;
 }
 
