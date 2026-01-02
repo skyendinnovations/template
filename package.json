@@ -13,12 +13,18 @@
     "clean": "turbo run clean && rm -rf node_modules .turbo",
     "db:generate": "cd packages/data && bun generate",
     "db:migrate": "cd packages/data && bun migrate",
-    "db:studio": "cd packages/data && bun studio"
+    "db:studio": "cd packages/data && bun studio",
+    "db:push": "cd packages/data && bun push"
   },
   "devDependencies": {
     "@types/bun": "^1.0.0",
+    "autoprefixer": "^10.4.23",
+    "postcss": "^8.5.6",
     "prettier": "^3.0.0",
-    "prettier-plugin-tailwindcss": "^0.6.0",
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "tailwind-merge": "^3.4.0",
+    "tailwindcss": "^4.1.18",
+    "tailwindcss-animate": "^1.0.7",
     "turbo": "^2.0.0",
     "typescript": "^5.0.0"
   },
@@ -52,8 +58,6 @@
     "clsx": "^2.1.1",
     "lucide-react": "^0.460.0",
     "next-safe-action": "^8.0.11",
-    "oxlint": "^1.36.0",
-    "tailwind-merge": "^2.4.0",
-    "tailwindcss-animate": "^1.0.7"
+    "oxlint": "^1.36.0"
   }
 }

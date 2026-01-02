@@ -1,0 +1,21 @@
+{
+  "$schema": "https://oxc.rs/configuration_schema.json",
+  "plugins": ["typescript", "unicorn", "oxc"],
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn"
+  },
+  "rules": {
+    "no-unused-vars": "error",
+    "typescript/no-explicit-any": "warn"
+  },
+  "ignorePatterns": ["node_modules", "dist", "**/*.min.js"],
+  "overrides": [
+    {
+      "files": ["packages/**/*.ts"],
+      "rules": {
+        "typescript/no-unused-vars": "error"
+      }
+    }
+  ]
+}
