@@ -1,33 +1,36 @@
-import { createAuth } from "@template/auth";
+import { getAuth } from "@template/auth";
 import { getDb } from "@/lib/db";
-import * as schema from "@template/data/schema";
+import { user, session, account, verification } from "@template/data/schema";
 import { toNextJsHandler } from "better-auth/next-js";
-import { NEXT_PUBLIC_APP_URL } from "@/envs";
+import { drizzleAdapter } from "better-auth/adapters/drizzle";
 
 export const runtime = "nodejs";
 
-// #region agent log
-fetch("http://127.0.0.1:7243/ingest/d079f950-e730-4743-b235-6696b1e2c7f7", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({
-    location: "apps/web/app/api/auth/[...all]/route.ts:10",
-    message: "Auth API route initialized",
-    data: { app: "web", baseURL: NEXT_PUBLIC_APP_URL },
-    timestamp: Date.now(),
-    sessionId: "debug-session",
-    runId: "initial",
-    hypothesisId: "H1",
-  }),
-}).catch(() => {});
-// #endregion
+const webSchema = {
+  user: user,
+  session: session,
+  account: account,
+  verification: verification,
+};
 
-// Create auth instance with app-specific database and schema
-const auth = createAuth(
-  getDb(),
-  schema,
-  NEXT_PUBLIC_APP_URL,
-  process.env.BETTER_AUTH_SECRET
+// Create auth instance with app-specific configuration
+const auth = getAuth(
+  {
+    name: "@template/web",
+    sendVerificationEmail: async ({ user, url }) => {
+      // TODO: Implement email sending
+      console.log("Send verification email to:", user.email, "URL:", url);
+    },
+    sendMagicLink: async ({ email, url }) => {
+      // TODO: Implement email sending
+      console.log("Send magic link to:", email, "URL:", url);
+    },
+    sendResetPassword: async ({ user, url }) => {
+      // TODO: Implement email sending
+      console.log("Send reset password to:", user.email, "URL:", url);
+    },
+  },
+  drizzleAdapter(getDb(), { provider: "pg", schema: webSchema })
 );
 
 export const GET = async (request: Request) => {

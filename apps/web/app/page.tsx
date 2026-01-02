@@ -53,12 +53,14 @@ export default function Home() {
 
             <Card>
               <CardHeader>
-                <CardTitle>Dashboard</CardTitle>
-                <CardDescription>View your data and analytics</CardDescription>
+                <CardTitle>Demo Form</CardTitle>
+                <CardDescription>Create and manage demo records</CardDescription>
               </CardHeader>
               <CardContent>
-                <Button className="w-full" variant="outline">
-                  Go to Dashboard
+                <Button className="w-full" variant="outline" asChild>
+                  <Link href="/demo">
+                    Create Demo Record
+                  </Link>
                 </Button>
               </CardContent>
             </Card>

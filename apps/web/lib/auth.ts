@@ -1,27 +1,20 @@
+import { headers } from "next/headers";
 import { getAuth } from "@template/auth";
 import { getDb } from "@/lib/db";
-import {
-  adminUser,
-  adminSession,
-  adminAccount,
-  adminVerification,
-} from "@template/data/schema";
-import { toNextJsHandler } from "better-auth/next-js";
+import { user, session, account, verification } from "@template/data/schema";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 
-export const runtime = "nodejs";
-
-const adminSchema = {
-  user: adminUser,
-  session: adminSession,
-  account: adminAccount,
-  verification: adminVerification,
+const webSchema = {
+  user: user,
+  session: session,
+  account: account,
+  verification: verification,
 };
 
 // Create auth instance with app-specific configuration
-const auth = getAuth(
+const authInstance = getAuth(
   {
-    name: "@template/admin",
+    name: "@template/web",
     sendVerificationEmail: async ({ user, url }) => {
       // TODO: Implement email sending
       console.log("Send verification email to:", user.email, "URL:", url);
@@ -35,15 +28,12 @@ const auth = getAuth(
       console.log("Send reset password to:", user.email, "URL:", url);
     },
   },
-  drizzleAdapter(getDb(), { provider: "pg", schema: adminSchema })
+  drizzleAdapter(getDb(), { provider: "pg", schema: webSchema })
 );
 
-export const GET = async (request: Request) => {
-  const handler = toNextJsHandler(auth);
-  return handler.GET(request);
-};
-
-export const POST = async (request: Request) => {
-  const handler = toNextJsHandler(auth);
-  return handler.POST(request);
-};
+export async function auth() {
+  const headersList = await headers();
+  return await authInstance.api.getSession({
+    headers: headersList,
+  });
+}

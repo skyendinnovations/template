@@ -1,0 +1,41 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1767372494965,
+      "tag": "0000_past_killmonger",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1767373032342,
+      "tag": "0001_mighty_luckman",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1767374581370,
+      "tag": "0002_far_purifiers",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1767374912429,
+      "tag": "0003_clever_inertia",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1767375311995,
+      "tag": "0004_fearless_purple_man",
+      "breakpoints": true
+    }
+  ]
+}

@@ -1,21 +1,22 @@
 {
   "name": "@template/auth",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "private": true,
-  "main": "./src/index.ts",
-  "types": "./src/index.ts",
+  "type": "module",
   "exports": {
-    ".": "./src/index.ts",
-    "./client": "./src/client.ts",
-    "./actions": "./src/actions.ts"
+    ".": "./auth.ts",
+    "./api": "./auth-api.ts",
+    "./client": "./auth-client.ts",
+    "./middleware": "./middleware.ts",
+    "./safe-action": "./safe-action.ts",
+    "./server": "./server.ts",
+    "./types": "./types.ts",
+    "./cookie-prefix": "./cookie-prefix.ts",
+    "./actions": "./actions.ts",
+    "./admin-actions": "./admin-actions.ts"
   },
-  "dependencies": {
-    "@template/data": "workspace:*",
-    "better-auth": "^1.0.0",
-    "zod": "^3.0.0"
-  },
-  "devDependencies": {
-    "typescript": "^5.0.0"
+  "scripts": {
+    "lint": "oxlint",
+    "clean": "rm -rf node_modules && rm -rf .turbo"
   }
 }
-

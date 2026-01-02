@@ -13,7 +13,8 @@
     "clean": "turbo run clean && rm -rf node_modules .turbo",
     "db:generate": "cd packages/data && bun generate",
     "db:migrate": "cd packages/data && bun migrate",
-    "db:studio": "cd packages/data && bun studio"
+    "db:studio": "cd packages/data && bun studio",
+    "db:push": "cd packages/data && bun push"
   },
   "devDependencies": {
     "@types/bun": "^1.0.0",

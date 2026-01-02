@@ -135,15 +135,7 @@
     },
     "packages/auth": {
       "name": "@template/auth",
-      "version": "0.1.0",
-      "dependencies": {
-        "@template/data": "workspace:*",
-        "better-auth": "^1.0.0",
-        "zod": "^3.0.0",
-      },
-      "devDependencies": {
-        "typescript": "^5.0.0",
-      },
+      "version": "0.0.1",
     },
     "packages/data": {
       "name": "@template/data",
